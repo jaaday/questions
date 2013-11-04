@@ -1,10 +1,9 @@
 package br.ufrn.ceres.bsi.questions;
 
 import br.ufrn.ceres.bsi.questions.dao.UserService;
+import br.ufrn.ceres.bsi.questions.dao.exceptions.NonexistentEntityException;
 import br.ufrn.ceres.bsi.questions.dao.util.JPAUtil;
 import br.ufrn.ceres.bsi.questions.model.Endereco;
-import br.ufrn.ceres.bsi.questions.model.Alternativa;
-import br.ufrn.ceres.bsi.questions.model.Questao;
 import br.ufrn.ceres.bsi.questions.model.Usuario;
 
 
@@ -38,18 +37,21 @@ public class Main {
         user2.setPassword("12345");
         user2.setAddress(endereco);
 
-        UserService service = new UserService();
-        service.setEntityManager(JPAUtil.EMF.createEntityManager());
+        UserService service = new UserService(JPAUtil.EMF);
         service.create(user1);
         service.create(user2);
 
-        System.out.println(service.find(user1.getId()));
-        System.out.println(service.find(user2.getId()));
+        System.out.println(service.findUser(user1.getId()));
+        System.out.println(service.findUser(user2.getId()));
 
-        service.delete(user1.getId());
+        try {
+			service.destroy(user1.getId());
+		} catch (NonexistentEntityException e) {
+			e.printStackTrace();
+		}
 
-        System.out.println(service.find(user1.getId()));
-        System.out.println(service.find(user2.getId()));
+        System.out.println(service.findUser(user1.getId()));
+        System.out.println(service.findUser(user2.getId()));
 
     }
 }
