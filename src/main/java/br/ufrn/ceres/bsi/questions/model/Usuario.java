@@ -11,24 +11,25 @@ import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({@NamedQuery(name = "Usuario.populateUsers", query = "SELECT u FROM Usuario u"),
+@NamedQuery(name = "Usuario.findByName", query = "SELECT u FROM Usuario u WHERE u.username = :nome"),
 @NamedQuery(name = "Usuario.countUsersTotal", query = "SELECT COUNT(u) FROM Usuario u")})
 public class Usuario extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 50, name="username")
 	private String username;
 	
-	@Column(length = 50)
+	@Column(length = 50,name="firstname")
 	private String firstname;
 	
-	@Column(length = 50)
+	@Column(length = 50,name="lastname")
 	private String lastname;
 	
-	@Column(length = 50)
+	@Column(length = 50,name="email")
 	private String email;
 	
-	@Column(length = 64)
+	@Column(length = 64,name="password")
 	private String password;
 	
 	@OneToOne(cascade = {CascadeType.ALL})

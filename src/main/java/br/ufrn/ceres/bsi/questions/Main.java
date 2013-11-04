@@ -1,11 +1,13 @@
 package br.ufrn.ceres.bsi.questions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.ufrn.ceres.bsi.questions.dao.UserService;
 import br.ufrn.ceres.bsi.questions.dao.exceptions.NonexistentEntityException;
 import br.ufrn.ceres.bsi.questions.dao.util.JPAUtil;
 import br.ufrn.ceres.bsi.questions.model.Endereco;
 import br.ufrn.ceres.bsi.questions.model.Usuario;
-
 
 public class Main {
 
@@ -52,6 +54,13 @@ public class Main {
 
         System.out.println(service.findUser(user1.getId()));
         System.out.println(service.findUser(user2.getId()));
+        
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        usuarios = service.buscarPorNome("xuxa");
+        
+        for(Usuario u:usuarios){
+        	System.out.println(u.toString());
+        }
 
     }
 }
