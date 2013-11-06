@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Sistema de questões - Cadastro de usuário</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <center>
+                <h:form id="formulario">
+                    <h:panelGrid>
+                        <p:panel header="Incluir Usuário">
+                            <h:panelGrid columns="2">
+                                <h:outputText value="User name: "/>
+                                <p:inputText id="username" value="#{usuarioBean.usuario.username}" maxlength="50"/>
+                                <h:outputText value="Password: "/>
+                                <p:inputText id="password" value="#{usuarioBean.usuario.password}" maxlength="64"/>
+                                <h:outputText value="First name: "/>
+                                <p:inputText id="firstname" value="#{usuarioBean.usuario.firstname}" maxlength="50"/>
+                                <h:outputText value="Last name: "/>
+                                <p:inputText id="lastname" value="#{usuarioBean.usuario.lastname}" maxlength="50"/>
+                                <h:outputText value="E-mail: "/>
+                                <p:inputText id="email" value="#{usuarioBean.usuario.email}" maxlength="50"/>
+                                <h:outputText value="City: "/>
+                                <p:inputText id="city" value="#{usuarioBean.usuario.address.city}" maxlength="50"/>
+                                <h:outputText value="Country: "/>
+                                <p:inputText id="country" value="#{usuarioBean.usuario.address.country}" maxlength="50"/>
+                                <h:outputText value="Street: "/>
+                                <p:inputText id="street" value="#{usuarioBean.usuario.address.street}" maxlength="50"/>
+                                <h:outputText value="Suburb: "/>
+                                <p:inputText id="suburb" value="#{usuarioBean.usuario.address.suburb}" maxlength="50"/>
+
+                                <p:commandButton value="GRAVAR" action="#{usuarioBean.inserirUsuario()}" update="tabelaUsuarios"/>
+                                <p:commandButton value="LIMPAR" type="reset"/>
+                            </h:panelGrid>
+                        </p:panel>
+                        <p:dataTable id="tabelaUsuarios" value="#{usuarioBean.usuarios}" emptyMessage="Não há registros" var="usuario" paginator="true" rows="5">
+                            <p:column headerText="User name">
+                                <h:outputText value="#{usuario.username}"/>
+                            </p:column>
+                            <p:column headerText="First name">
+                                <h:outputText value="#{usuario.firstname}"/>
+                            </p:column>
+                            <p:column headerText="Last name">
+                                <h:outputText value="#{usuario.lastname}"/>
+                            </p:column>
+                            <p:column headerText="E-mail">
+                                <h:outputText value="#{usuario.email}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="REMOVER" update="tabelaUsuarios" action="#{usuarioBean.removerUsuario(usuario)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGrid>
+                </h:form>
+            </center>
+        </h:body>
+
+    </f:view>
+</html>
+
