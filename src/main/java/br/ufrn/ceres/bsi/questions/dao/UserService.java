@@ -94,6 +94,7 @@ public class UserService implements Serializable {
 		return findUserEntities(false, maxResults, firstResult);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private List<Usuario> findUserEntities(boolean all, int maxResults,
 			int firstResult) {
 		EntityManager em = getEntityManager();
@@ -120,6 +121,7 @@ public class UserService implements Serializable {
 		}
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int getUserCount() {
 		EntityManager em = getEntityManager();
 		try {
@@ -133,6 +135,7 @@ public class UserService implements Serializable {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Usuario> buscarPorNome(String nome) {
 		EntityManager em = getEntityManager();
 		try {

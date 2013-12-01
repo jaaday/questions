@@ -39,7 +39,7 @@
                                 <h:outputText value="Suburb: "/>
                                 <p:inputText id="suburb" value="#{usuarioBean.usuario.address.suburb}" maxlength="50"/>
 
-                                <p:commandButton value="GRAVAR" action="#{usuarioBean.inserirUsuario()}" update="tabelaUsuarios"/>
+                                <p:commandButton value="GRAVAR" action="#{usuarioBean.inserirUsuario}" update="tabelaUsuarios"/>
                                 <p:commandButton value="LIMPAR" type="reset"/>
                             </h:panelGrid>
                         </p:panel>
