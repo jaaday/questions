@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({@NamedQuery(name = "Questao.allQuestao", query = "SELECT q FROM Questao q"),
@@ -24,8 +24,8 @@ public class Questao extends BaseEntity implements Serializable {
 	@OneToMany
 	private List<Alternativa> alternativas = new ArrayList<Alternativa>();
 	
-	@OneToMany
-	private List<Alternativa>  corretas = new ArrayList<Alternativa>();
+	@OneToOne
+	private Alternativa correta = new Alternativa();
 	
 	public Questao() {
 	}
@@ -50,12 +50,12 @@ public class Questao extends BaseEntity implements Serializable {
 		this.alternativas = alternativas;
 	}
 
-	public List<Alternativa> getCorretas() {
-		return corretas;
+	public Alternativa getCorreta() {
+		return correta;
 	}
 
-	public void setCorretas(List<Alternativa> corretas) {
-		this.corretas = corretas;
+	public void setCorretas(Alternativa correta) {
+		this.correta = correta;
 	}
 	
 	public void addAlternativa(Alternativa a) {
@@ -63,7 +63,7 @@ public class Questao extends BaseEntity implements Serializable {
 	}
 	
 	public void addAlternativaCorreta(Alternativa a) {
-		corretas.add(a);
+		this.correta = a;
 	}
 
 }

@@ -8,6 +8,7 @@
 
     <f:view contentType="text/html">
         <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/blitzer/theme.css"/>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
                 <title>Sistema de questões - Cadastro de usuário</title>
@@ -57,7 +58,7 @@
                                 <h:outputText value="#{usuario.email}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="REMOVER" update="tabelaUsuarios" action="#{usuarioBean.removerUsuario(usuario)}"/>
+                                <p:commandButton value="REMOVER" update="tabelaUsuarios" action="#{usuarioBean.removerUsuario($usuario)}"/>
                             </p:column>
                         </p:dataTable>
                     </h:panelGrid>

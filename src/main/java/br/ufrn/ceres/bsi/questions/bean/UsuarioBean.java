@@ -1,24 +1,27 @@
 package br.ufrn.ceres.bsi.questions.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 import br.ufrn.ceres.bsi.questions.dao.UserService;
 import br.ufrn.ceres.bsi.questions.dao.exceptions.NonexistentEntityException;
 import br.ufrn.ceres.bsi.questions.dao.util.JPAUtil;
 import br.ufrn.ceres.bsi.questions.model.Usuario;
 
-@ManagedBean
-@SessionScoped
-public class UsuarioBean {
-	private UserService dao;
-	private Usuario usuario;
+@ManagedBean(name="usuarioBean")
+@RequestScoped
+public class UsuarioBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private UserService dao = new UserService(JPAUtil.EMF);
+	private Usuario usuario = new Usuario();
 
 	public UsuarioBean(){
-		dao = new UserService(JPAUtil.EMF);
-		usuario = new Usuario();
 	}
 	
 	public Usuario getUsuario() {
