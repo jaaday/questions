@@ -40,15 +40,11 @@ public class UsuarioBean implements Serializable{
 		dao.create(usuario);
 	}
 	
-	public void removerUsuario(Usuario u){
-		try {
-			dao.destroy(u.getId());
-		} catch (NonexistentEntityException e) {
-			e.printStackTrace();
-		}
+	public void removerUsuario(Usuario u) throws NonexistentEntityException{
+		dao.delete(u.getId());
 	}
 	
 	public List<Usuario> getUsuarios(){
-		return dao.findUserEntities();
+		return dao.findEntities();
 	}
 }

@@ -85,7 +85,7 @@ public class QuestaoBean implements Serializable{
 		this.questao = questao;
 	}
 	
-	public String inserirQuestao(){
+	public void inserirQuestao(){
 		try {
 			questao.addAlternativa(a);
 			questao.addAlternativa(b);
@@ -96,7 +96,6 @@ public class QuestaoBean implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "Teste";
 	}
 	
 	public void removerUsuario(Questao q) throws NonexistentEntityException{
