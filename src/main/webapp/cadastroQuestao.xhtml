@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/blitzer/theme.css"/>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Sistema de questões - Cadastro de questão</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <center>
+                <h:form id="formulario">
+                    <h:panelGrid>
+                        <p:panel header="Incluir Questão">
+                            <h:panelGrid columns="2">
+                            
+                                <h:outputText value="Descrição: "/>
+                                <p:inputText id="descricao" value="#{questaoBean.questao.descricao}" maxlength="50"/>
+                                <h:outputText value="Alternativa A: "/>
+  								<p:inputText id="aa" value="#{questaoBean.a.descricao}" maxlength="50"/>
+                                <h:outputText value="Alternativa B: "/>
+  								<p:inputText id="ab" value="#{questaoBean.b.descricao}" maxlength="50"/>
+                                <h:outputText value="Alternativa C: "/>
+  								<p:inputText id="ac" value="#{questaoBean.c.descricao}" maxlength="50"/>
+                                <h:outputText value="Alternativa D: "/>
+  								<p:inputText id="ad" value="#{questaoBean.d.descricao}" maxlength="50"/>
+                                
+                                <p:commandButton value="GRAVAR" actionListener="#{questaoBean.inserirQuestao}" update="tabelaQuestoes"/>
+                                <p:commandButton value="LIMPAR" type="reset"/>
+                            </h:panelGrid>
+                        </p:panel>
+                        <p:dataTable id="tabelaQuestoes" value="#{questaoBean.questoes}" emptyMessage="Não há registros" var="questao" paginator="true" rows="5">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{questao.id}"/>
+                            </p:column>
+                            <p:column headerText="Descrição">
+                                <h:outputText value="#{questao.descricao}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGrid>
+                </h:form>
+            </center>
+        </h:body>
+
+    </f:view>
+</html>
