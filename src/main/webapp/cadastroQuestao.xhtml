@@ -25,13 +25,13 @@
                                 <h:outputText value="Descrição: "/>
                                 <p:inputText id="descricao" value="#{questaoBean.questao.descricao}" maxlength="50"/>
                                 <h:outputText value="Alternativa A: "/>
-  								<p:inputText id="aa" value="#{questaoBean.a.descricao}" maxlength="50"/>
+  								<p:inputText id="aa" value="#{questaoBean.a}" maxlength="50"/>
                                 <h:outputText value="Alternativa B: "/>
-  								<p:inputText id="ab" value="#{questaoBean.b.descricao}" maxlength="50"/>
+  								<p:inputText id="ab" value="#{questaoBean.b}" maxlength="50"/>
                                 <h:outputText value="Alternativa C: "/>
-  								<p:inputText id="ac" value="#{questaoBean.c.descricao}" maxlength="50"/>
+  								<p:inputText id="ac" value="#{questaoBean.c}" maxlength="50"/>
                                 <h:outputText value="Alternativa D: "/>
-  								<p:inputText id="ad" value="#{questaoBean.d.descricao}" maxlength="50"/>
+  								<p:inputText id="ad" value="#{questaoBean.d}" maxlength="50"/>
                                 
                                 <p:commandButton value="GRAVAR" actionListener="#{questaoBean.inserirQuestao}" update="tabelaQuestoes"/>
                                 <p:commandButton value="LIMPAR" type="reset"/>

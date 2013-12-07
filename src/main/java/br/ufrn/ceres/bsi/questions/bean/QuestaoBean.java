@@ -4,68 +4,57 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 import br.ufrn.ceres.bsi.questions.dao.QuestaoService;
 import br.ufrn.ceres.bsi.questions.dao.exceptions.NonexistentEntityException;
 import br.ufrn.ceres.bsi.questions.dao.util.JPAUtil;
-import br.ufrn.ceres.bsi.questions.model.Alternativa;
 import br.ufrn.ceres.bsi.questions.model.Questao;
 
 @ManagedBean(name="questaoBean")
-@SessionScoped
+@RequestScoped
 public class QuestaoBean implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Questao questao;
-    private Alternativa a;
-    private Alternativa b;
-    private Alternativa c;
-    private Alternativa d;
-    private QuestaoService dao;
+	private Questao questao = new Questao();
+    private String a, b, c, d;
+	private QuestaoService dao = new QuestaoService(JPAUtil.EMF);
     
     public QuestaoBean(){
-    	questao = new Questao();
-        a = new Alternativa();
-        b = new Alternativa();
-        c = new Alternativa();
-        d = new Alternativa();
-        dao = new QuestaoService(JPAUtil.EMF);
     }
-
-	public Alternativa getA() {
+    
+    public String getA() {
 		return a;
 	}
 
-	public void setA(Alternativa a) {
+	public void setA(String a) {
 		this.a = a;
 	}
 
-	public Alternativa getB() {
+	public String getB() {
 		return b;
 	}
 
-	public void setB(Alternativa b) {
+	public void setB(String b) {
 		this.b = b;
 	}
 
-	public Alternativa getC() {
+	public String getC() {
 		return c;
 	}
 
-	public void setC(Alternativa c) {
+	public void setC(String c) {
 		this.c = c;
 	}
 
-	public Alternativa getD() {
+	public String getD() {
 		return d;
 	}
 
-	public void setD(Alternativa d) {
+	public void setD(String d) {
 		this.d = d;
 	}
 
