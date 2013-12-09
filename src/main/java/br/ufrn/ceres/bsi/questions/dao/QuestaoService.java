@@ -13,8 +13,8 @@ public class QuestaoService extends DataAccessService<Questao> {
     }
 
     /**
-     * Retorna uma nova questão.
-     * @param descricao A descrição da questão.
+     * Retorna uma nova questao.
+     * @param descricao A descricao da questao.
      * @return {@link Questao}
      */
     public Questao novaQuestao(String descricao){

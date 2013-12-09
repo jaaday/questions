@@ -13,8 +13,7 @@ public class UserService extends DataAccessService<Usuario> {
     }
 
     /**
-     * Retorna uma nova questão.
-     * @param descricao A descrição da questão.
+     * Retorna um novo usuario
      * @return {@link Usuario}
      */
     public Usuario novoUsuario(){

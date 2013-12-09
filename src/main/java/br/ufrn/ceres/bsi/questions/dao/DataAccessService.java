@@ -44,7 +44,7 @@ public abstract class DataAccessService<T> {
      *            Object
      * @return
      */
-    public void create(T t) {
+    public T create(T t) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -52,7 +52,7 @@ public abstract class DataAccessService<T> {
             em.persist(t);
             em.flush();
             em.getTransaction().commit();
-            //return t;
+            return t;
         }
         catch (Exception ex) {
             throw ex;
