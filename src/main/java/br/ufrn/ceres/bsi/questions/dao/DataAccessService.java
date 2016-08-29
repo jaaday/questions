@@ -29,8 +29,7 @@ public abstract class DataAccessService<T> {
     /**
      * Default constructor
      *
-     * @param type
-     *            entity class
+     * @param type entity class
      */
     public DataAccessService(Class<T> type, EntityManagerFactory emf) {
         this.type = type;
@@ -40,9 +39,8 @@ public abstract class DataAccessService<T> {
     /**
      * Stores an instance of the entity class in the database
      *
-     * @param T
-     *            Object
-     * @return
+     * @param T   
+     * @return Object
      */
     public T create(T t) {
         EntityManager em = null;
@@ -69,9 +67,8 @@ public abstract class DataAccessService<T> {
      * database
      *
      * @param T
-     *            Object
      * @param id
-     * @return
+     * @return Object
      */
     public T find(Object id) {
         EntityManager em = getEntityManager();
